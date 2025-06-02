@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sellify</title>
+  <style>
+    /* Base reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #0e0e0e; /* Black base */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Large S logo in green */
+    .logo {
+      font-size: 8rem;
+      color: #00FF88; /* Pastel green */
+      z-index: 10;
+    }
+
+    /* Dancing silhouettes in the background */
+    .dancers {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://media.giphy.com/media/Y4z9olnoVl5QI/giphy.gif') center center / cover no-repeat;
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    /* Auto-redirect to signin after 5 seconds */
+  </style>
+</head>
+<body>
+  <!-- Dancing people background -->
+  <div class="dancers"></div>
+
+  <!-- Big S Logo -->
+  <div class="logo">S</div>
+
+  <!-- Auto-redirect to signin.html -->
+  <script>
+    setTimeout(() => {
+      window.location.href = 'signin.html'; // Redirect after 5 seconds
+    }, 5000);
+  </script>
+</body>
+</html>
