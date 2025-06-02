@@ -1,60 +1,130 @@
+<!-- logo.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sellify</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sellify - Splash Screen</title>
   <style>
-    /* Base reset */
+    /* Reset and page styling */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      height: 100vh;
-      background: #0e0e0e; /* Black base */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
+    body, html {
+      height: 100%;
+      width: 100%;
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7f5, #ffffff); /* soft pastel blend */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
 
-    /* Large S logo in green */
-    .logo {
-      font-size: 8rem;
-      color: #00FF88; /* Pastel green */
-      z-index: 10;
-    }
-
-    /* Dancing silhouettes in the background */
+    /* Animated dancing background */
     .dancers {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: url('https://media.giphy.com/media/Y4z9olnoVl5QI/giphy.gif') center center / cover no-repeat;
-      opacity: 0.2;
       z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+      gap: 30px;
+      opacity: 0.15;
+      animation: moveAround 20s linear infinite;
     }
 
-    /* Auto-redirect to signin after 5 seconds */
+    .dancer {
+      width: 40px;
+      height: 40px;
+      background: #4CAF50;
+      border-radius: 50% 50% 0 0;
+      position: relative;
+    }
+
+    .dancer::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      background: #000;
+      clip-path: polygon(50% 0%, 90% 100%, 10% 100%);
+    }
+
+    @keyframes moveAround {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Center S Logo */
+    .logo {
+      z-index: 2;
+      font-size: 150px;
+      font-weight: 900;
+      color: #000;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+      animation: zoomFade 1s ease-out;
+    }
+
+    @keyframes zoomFade {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Auto redirect to signin after 5 seconds */
+    @media (min-width: 768px) {
+      body::after {
+        content: 'Redirecting...';
+        position: absolute;
+        bottom: 30px;
+        font-size: 14px;
+        color: #555;
+        opacity: 0.6;
+      }
+    }
   </style>
-</head>
-<body>
-  <!-- Dancing people background -->
-  <div class="dancers"></div>
 
-  <!-- Big S Logo -->
-  <div class="logo">S</div>
-
-  <!-- Auto-redirect to signin.html -->
   <script>
+    // Redirect after 5 seconds
     setTimeout(() => {
-      window.location.href = 'signin.html'; // Redirect after 5 seconds
+      window.location.href = "signin.html";
     }, 5000);
   </script>
+</head>
+<body>
+
+  <!-- Animated Background People -->
+  <div class="dancers">
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+    <div class="dancer"></div>
+  </div>
+
+  <!-- Centered Logo -->
+  <div class="logo">S</div>
+
 </body>
 </html>
+
